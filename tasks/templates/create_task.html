@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+  <section class="create_task">
+    <div class="container">
+      <div class="column text-center p-5">
+        <h1 class="mb-4">Create Task</h1>
+        <div class="actions">
+          <a href="{% url 'tasks' %}" class="btn btn-primary">Back to Tasks</a>
+        </div>
+      </div>
+      <div class="column text-center">
+        <form action="{% url 'create_task' %}" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input class="btn btn-primary" type="submit" value="Create Task">
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

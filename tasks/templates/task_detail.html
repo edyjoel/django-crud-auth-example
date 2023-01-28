@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main>
+  <section class="task_detail">
+    <div class="container">
+      <div class="column text-center p-5">
+        <h1 class="mb-4">Task Detail</h1>
+        <div class="actions">
+          <a href="{% url 'tasks' %}" class="btn btn-primary">Back to Tasks</a>
+        </div>
+      </div>
+
+      <div class="column text-center pb-5">
+        <form method="POST" class="mb-4">
+          {% csrf_token %}
+          {{ error }}
+          {{ form.as_p }}
+          <button class="btn btn-primary" type="submit">Update</button>
+        </form>
+        <form action="{% url 'complete_task' task.id %}" method="POST" class="d-inline-block">
+          {% csrf_token %}
+          <button class="btn btn-outline-primary" type="submit">Mark as completed</button>
+        </form>
+        <form action="{% url 'delete_task' task.id %}" method="POST" class="d-inline-block">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

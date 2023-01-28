@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center p-5">
+          {% if user.is_authenticated %}
+          <h1>Welcome {{ user.username }}</h1>
+          <p>For create your tasks you click on the button below.</p>
+          <a href="{% url 'create_task' %}" class="btn btn-primary">Create Task</a>
+          {% else %}
+          <h1>App Tasks</h1>
+          <p>For create your tasks you login or create account first.</p>
+          <a href="/signin" class="btn btn-primary">LogIn</a>
+          <a href="/signup" class="btn btn-outline-primary">SignUp</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
